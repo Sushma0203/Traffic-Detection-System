@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        .search-bar input {
+            width: 80%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .search-bar button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .search-bar button:hover {
+            background-color: #45a049;
+        }
+        .faq-section {
+            margin-bottom: 40px;
+        }
+        .faq-section h2 {
+            margin-bottom: 20px;
+            font-size: 22px;
+            color: #333;
+        }
+        .faq-item {
+            margin-bottom: 15px;
+        }
+        .faq-item h3 {
+            font-size: 18px;
+            margin: 0;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .faq-item h3:hover {
+            color: #4CAF50;
+        }
+        .faq-item p {
+            margin-top: 10px;
+            display: none;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        .contact-section {
+            text-align: center;
+        }
+        .contact-section p {
+            margin: 5px 0;
+        }
+        .contact-section a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .contact-section a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Help Center</h1>
+    
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search for help...">
+        <button onclick="searchFAQ()">Search</button>
+    </div>
+
+    <div class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <h3>How do I reset my password?</h3>
+            <p>You can reset your password by going to the "Forgot Password" page, entering your email, and following the instructions sent to your inbox.</p>
+        </div>
+        
+        <div class="faq-item">
+            <h3>How do I update my profile information?</h3>
+            <p>To update your profile information, log in to your account, go to the "Profile" section, and edit the desired fields. Don’t forget to save your changes.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Where can I view my order history?</h3>
+            <p>Your order history can be viewed under the "Orders" section in your account. You’ll be able to see past orders, track current ones, and manage returns.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How do I contact customer support?</h3>
+            <p>You can contact customer support by visiting our "Contact Us" page or by calling the support hotline listed below.</p>
+        </div>
+
+        <!-- Additional FAQ items -->
+        <div class="faq-item">
+            <h3>How can I track my order?</h3>
+            <p>Once your order has been shipped, you’ll receive a tracking link via email. You can also track your order in the "Orders" section of your account.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What is the return policy?</h3>
+            <p>Our return policy allows you to return items within 30 days of receipt. Items must be in their original condition with all tags attached. Please visit our "Returns" page for more details.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How do I change my shipping address?</h3>
+            <p>To change your shipping address, log in to your account, go to the "Addresses" section, and update your information. For orders already placed, please contact customer support.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What payment methods are accepted?</h3>
+            <p>We accept various payment methods, including credit/debit cards, PayPal, and bank transfers. Visit the "Payment Options" page for more information.</p>
+        </div>
+    </div>
+
+    <div class="contact-section">
+        <p>Need further assistance?</p>
+        <p>Contact us at <a href="mailto:021bim060@sxc.edu.np">021bim060@sxc.edu.np</a></p>
+    </div>
+</div>
+
+<script>
+    // JavaScript for FAQ toggle
+    document.querySelectorAll('.faq-item h3').forEach(item => {
+        item.addEventListener('click', () => {
+            const p = item.nextElementSibling;
+            const isVisible = p.style.display === 'block';
+            document.querySelectorAll('.faq-item p').forEach(p => p.style.display = 'none');
+            p.style.display = isVisible ? 'none' : 'block';
+        });
+    });
+
+    // JavaScript for search functionality
+    function searchFAQ() {
+        const query = document.getElementById('searchInput').value.toLowerCase();
+        const faqItems = document.querySelectorAll('.faq-item');
+        let found = false;
+
+        faqItems.forEach(item => {
+            const question = item.querySelector('h3').textContent.toLowerCase();
+            const answer = item.querySelector('p').textContent.toLowerCase();
+
+            if (question.includes(query) || answer.includes(query)) {
+                item.querySelector('p').style.display = 'block';
+                found = true;
+            } else {
+                item.querySelector('p').style.display = 'none';
+            }
+        });
+
+        if (!found) {
+            alert('No matching FAQ found.');
+        }
+    }
+</script>
+
+</body>
+</html>

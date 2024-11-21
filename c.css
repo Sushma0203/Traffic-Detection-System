@@ -1,0 +1,132 @@
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+
+.hero-section {
+    background-image: url('hehe.jpeg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 100px 0;
+    position: relative;
+}
+
+
+.hero-section::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+
+.hero-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+
+.info-cards {
+    background-color: #F3E4F6;
+    padding: 50px 0;
+}
+
+
+.card {
+    margin-bottom: 30px;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+.card-title {
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+}
+
+
+.btn-primary {
+    background-color: #7B38D8;
+    border-color: #7B38D8;
+}
+
+
+.btn-outline-primary {
+    border-color: #7B38D8;
+    color: #7B38D8;
+}
+
+
+.btn-outline-primary:hover {
+    background-color: #7B38D8;
+    color: #fff;
+}
+
+
+
+
+/*footer*/
+.footer {
+    background-color: #1A1A1A;
+    color: white;
+    padding: 40px 0;
+    font-size: 14px;
+}
+
+
+.footer .footer-logo span {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: white;
+}
+
+
+.footer .footer-social i {
+    font-size: 18px;
+}
+
+
+.footer .footer-legal a {
+    text-decoration: none;
+    color: #7B38D8;
+}
+
+
+.footer .footer-legal a:hover {
+    text-decoration: underline;
+}
+
+
+.footer .input-group-text {
+    border-right: 0;
+}
+
+
+.footer .form-control {
+    border-left: 0;
+}
+
+
+.footer .input-group-append .btn-primary {
+    background-color: #7B38D8;
+    border-color: #7B38D8;
+}
+
+
+.footer .input-group-append .btn-primary:hover {
+    background-color: #5e2ebf;
+}
+
+
+.footer .footer-language select {
+    background-color: #2C2C2C;
+    color: white;
+    border: 1px solid #444;
+}
+
+

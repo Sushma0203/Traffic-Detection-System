@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Monitoring</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="c.css">
+</head>
+<body>
+    <header class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <label for="nav"> Vision </label>
+            </a>
+        </div>
+    </header>
+
+    <section class="hero-section text-center">
+        <div class="container">
+            <h1 id="title" class="display-4">Traffic Monitoring</h1>
+            <p id="subtitle" class="lead">Monitor traffic conditions in real-time to save a life and be human</p>
+            <a id="loginBtn" href="signin.html" class="btn btn-primary btn-lg">Login <br> OR <br> Sign-Up</a>
+        </div>
+    </section>
+
+    <section class="info-cards">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 id="realTimeData" class="card-title">Real-Time Data</h5>
+                            <p id="realTimeText" class="card-text">Access up-to-the-minute traffic conditions on all major routes.</p>
+                            <a href="traffic.html" class="btn btn-outline-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 id="trafficAlerts" class="card-title">Traffic Alerts</h5>
+                            <p id="alertsText" class="card-text">Receive instant notifications about accidents and road closures.</p>
+                            <a href="https://traffic.nepalpolice.gov.np/news/latest-news/" class="btn btn-outline-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 id="analyticalReports" class="card-title">Analytical Reports</h5>
+                            <p id="reportsText" class="card-text">Detailed analysis of traffic patterns and trends over time.</p>
+                            <a href="https://traffic.nepalpolice.gov.np/news/109/" class="btn btn-outline-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer bg-dark text-white">
+        <div class="container text-center py-4">
+            <h5 id="subscribe">Subscribe to our newsletter</h5>
+            <div class="d-flex justify-content-center">
+                <div class="input-group mb-3" style="max-width: 400px;">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-white"><i class="fas fa-envelope"></i></span>
+                    </div>
+                    <input type="email" class="form-control" placeholder="Input your email">
+                    <div class="input-group-append">
+                        <a href="subscribe.html" class="btn btn-primary" id="subscribeButton">Subscribe</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-links d-flex justify-content-center mt-3">
+                <a href="dash.html" class="mx-2 text-white" id="dashboard">Dashboard</a>
+                <a href="about.html" class="mx-2 text-white" id="about">About us</a>
+                <a href="feature.html" class="mx-2 text-white" id="features">Features</a>
+                <a href="help.html" class="mx-2 text-white" id="helpCenter">Help Center</a>
+                <a href="contact.html" class="mx-2 text-white" id="contact">Contact us</a>
+            </div>
+            <hr class="bg-light">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="footer-logo d-flex align-items-center">
+                    <span class="ml-2">Vision</span>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+                <div class="footer-language">
+                    <select id="language-select" class="form-control">
+                        <option value="en">English</option>
+                        <option value="np">Nepali</option>
+                    </select>
+                </div>
+                <div class="footer-legal text-white">
+                    <small>© 2024 Brand, Inc. • Privacy • Terms • Sitemap</small>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const translations = {
+            en: {
+                title: "Traffic Monitoring",
+                subtitle: "Monitor traffic conditions in real-time to save a life and be human",
+                loginBtn: "Login <br> OR <br> Sign-Up",
+                realTimeData: "Real-Time Data",
+                realTimeText: "Access up-to-the-minute traffic conditions on all major routes.",
+                trafficAlerts: "Traffic Alerts",
+                alertsText: "Receive instant notifications about accidents and road closures.",
+                analyticalReports: "Analytical Reports",
+                reportsText: "Detailed analysis of traffic patterns and trends over time.",
+                subscribe: "Subscribe to our newsletter",
+                dashboard: "Dashboard",
+                about: "About us",
+                features: "Features",
+                helpCenter: "Help Center",
+                contact: "Contact us",
+                privacy: "Privacy",
+                terms: "Terms",
+                sitemap: "Sitemap"
+            },
+            np: {
+                title: "यातायात निगरानी",
+                subtitle: "जीवन बचाउन र मानव हुनको लागि वास्तविक समयमा यातायातको स्थिति अनुगमन गर्नुहोस्",
+                loginBtn: "लग इन गर्नुहोस् <br> वा <br> साइन अप गर्नुहोस्",
+                realTimeData: "वास्तविक समय डेटा",
+                realTimeText: "प्रमुख मार्गहरूमा सन्देशहरू तुरुन्तै पहुँच गर्नुहोस्।",
+                trafficAlerts: "यातायात अलर्ट",
+                alertsText: "दुर्घटनाहरू र सडक बन्दका बारेमा तुरुन्त सूचना प्राप्त गर्नुहोस्।",
+                analyticalReports: "विश्लेषणात्मक रिपोर्टहरू",
+                reportsText: "समयसँगै यातायातका ढाँचाहरूको विस्तृत विश्लेषण।",
+                subscribe: "हाम्रो न्यूजलेटर सदस्यता गर्नुहोस्",
+                dashboard: "ड्यासबोर्ड",
+                about: "हाम्रोबारे",
+                features: "विशेषताहरू",
+                helpCenter: "मद्दत केन्द्र",
+                contact: "हामीलाई सम्पर्क गर्नुहोस्",
+                privacy: "गोपनीयता",
+                terms: "सर्तहरू",
+                sitemap: "साइटमैप"
+            }
+        };
+
+        function switchLanguage(lang) {
+            document.getElementById('title').innerHTML = translations[lang].title;
+            document.getElementById('subtitle').innerHTML = translations[lang].subtitle;
+            document.getElementById('loginBtn').innerHTML = translations[lang].loginBtn;
+            document.getElementById('realTimeData').innerHTML = translations[lang].realTimeData;
+            document.getElementById('realTimeText').innerHTML = translations[lang].realTimeText;
+            document.getElementById('trafficAlerts').innerHTML = translations[lang].trafficAlerts;
+            document.getElementById('alertsText').innerHTML = translations[lang].alertsText;
+            document.getElementById('analyticalReports').innerHTML = translations[lang].analyticalReports;
+            document.getElementById('reportsText').innerHTML = translations[lang].reportsText;
+            document.getElementById('subscribe').innerHTML = translations[lang].subscribe;
+            document.getElementById('dashboard').innerHTML = translations[lang].dashboard;
+            document.getElementById('about').innerHTML = translations[lang].about;
+            document.getElementById('features').innerHTML = translations[lang].features;
+            document.getElementById('helpCenter').innerHTML = translations[lang].helpCenter;
+            document.getElementById('contact').innerHTML = translations[lang].contact;
+            document.getElementById('privacy').innerHTML = translations[lang].privacy;
+            document.getElementById('terms').innerHTML = translations[lang].terms;
+            document.getElementById('sitemap').innerHTML = translations[lang].sitemap;
+        }
+
+        document.getElementById('language-select').addEventListener('change', function() {
+            switchLanguage(this.value);
+        });
+
+        window.onload = function() {
+            switchLanguage('en'); // Default language
+        };
+    </script>
+
+</body>
+</html>

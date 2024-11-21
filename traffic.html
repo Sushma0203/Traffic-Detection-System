@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Nepal Real-Time Traffic - HERE Maps with Leaflet</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 100vh;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<h2 style="text-align:center;">Real-Time Traffic in Nepal</h2>
+<div id="map"></div>
+
+<!-- Load Leaflet.js library -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+
+    // Replace YOUR_HERE_API_KEY with your actual HERE API key
+    const hereApiKey = 'Tep0NCqjLCO9otRFjO5gsc-2ueLLHSA7mo6XmPULbHA';
+
+    // Initialize the Leaflet map centered on Nepal
+    const map = L.map('map').setView([28.3949, 84.1240], 7); // Coordinates for Nepal's center
+    
+    // Add OpenStreetMap tile layer as the base layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+    try {
+    const hereTrafficLayer = L.tileLayer(
+        `https://traffic.ls.hereapi.com/traffic/6.0/flowtile/2/{z}/{x}/{y}/256/png8?apiKey=${hereApiKey}`,
+        {
+            attribution: 'Traffic data © HERE',
+            maxZoom: 19
+        }
+    );
+
+    hereTrafficLayer.addTo(map);
+    console.log("Traffic layer added successfully.");
+} catch (error) {
+    console.error("Error loading traffic layer:", error);
+}
+
+
+    // Overlay traffic data on the map
+    hereTrafficLayer.addTo(map);
+</script>
+
+</body>
+</html>

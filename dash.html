@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ambulance Locations</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Inline basic styling for simplicity */
+        .container { display: flex; }
+        .sidebar { width: 200px; background-color: #333; color: white; padding: 20px; }
+        .sidebar ul { list-style: none; padding: 0; }
+        .sidebar li { margin-bottom: 15px; cursor: pointer; }
+        .main-content { padding: 20px; flex: 1; }
+        .status-filters { display: flex; gap: 10px; margin-bottom: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 10px; text-align: left; border-bottom: 1px solid #ddd; }
+        .status { font-weight: bold; }
+        .available { color: green; }
+        .busy { color: red; }
+        .action-button { margin-right: 5px; }
+        .map-container { width: 100%; height: 400px; background-color: #eee; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li>Dashboard</li>
+                    <li>Ambulance</li>
+                    <li>Hospitals</li>
+                    <li>Emergencies</li>
+                    <li>Profiles</li>
+                    <li>Settings</li>
+                </ul>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <header>
+                <h1>Ambulance Locations</h1>
+                <div class="status-filters">
+                    <label><input type="checkbox" id="filter-available" checked> Available</label>
+                    <label><input type="checkbox" id="filter-unavailable" checked> Unavailable</label>
+                </div>
+            </header>
+            <table id="ambulance-table">
+                <thead>
+                    <tr>
+                        <th>Ambulance ID</th>
+                        <th>Ambulance Name</th>
+                        <th>Latitude</th>
+                        <th>Longitude</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-status="available">
+                        <td>001</td>
+                        <td>Ambulance A</td>
+                        <td>34.0522</td>
+                        <td>-118.2437</td>
+                        <td class="status available">Available on duty</td>
+                        <td>
+                            <button class="action-button" onclick="viewDetails('Ambulance A', 34.0522, -118.2437)">View</button>
+                            <button class="action-button" onclick="trackAmbulance(34.0522, -118.2437)">Track</button>
+                        </td>
+                    </tr>
+                    <tr data-status="busy">
+                        <td>002</td>
+                        <td>Ambulance B</td>
+                        <td>40.7128</td>
+                        <td>-74.0060</td>
+                        <td class="status busy">Busy in transit</td>
+                        <td>
+                            <button class="action-button" onclick="viewDetails('Ambulance B', 40.7128, -74.0060)">View</button>
+                            <button class="action-button" onclick="trackAmbulance(40.7128, -74.0060)">Track</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="map-container" id="map">Map View (Placeholder)</div>
+        </main>
+    </div>
+
+    <script>
+        // Filter functionality
+        document.getElementById('filter-available').addEventListener('change', function() {
+            toggleRows('available', this.checked);
+        });
+        document.getElementById('filter-unavailable').addEventListener('change', function() {
+            toggleRows('busy', this.checked);
+        });
+
+        function toggleRows(status, show) {
+            const rows = document.querySelectorAll(`tr[data-status="${status}"]`);
+            rows.forEach(row => {
+                row.style.display = show ? '' : 'none';
+            });
+        }
+
+        // View details functionality
+        function viewDetails(name, lat, lng) {
+            alert(`Ambulance Details:\nName: ${name}\nLatitude: ${lat}\nLongitude: ${lng}`);
+        }
+
+        // Track ambulance functionality
+        function trackAmbulance(lat, lng) {
+            const map = document.getElementById('map');
+            map.innerHTML = `Tracking Ambulance at Latitude: ${lat}, Longitude: ${lng}`;
+            // Placeholder for real map integration
+        }
+
+        // Simulate real-time location updates
+        setInterval(() => {
+            const randomLat = (Math.random() * 180 - 90).toFixed(4);
+            const randomLng = (Math.random() * 360 - 180).toFixed(4);
+            const table = document.getElementById('ambulance-table').getElementsByTagName('tbody')[0];
+            const newRow = `<tr data-status="available">
+                <td>00${Math.floor(Math.random() * 100)}</td>
+                <td>Ambulance ${String.fromCharCode(65 + Math.floor(Math.random() * 26))}</td>
+                <td>${randomLat}</td>
+                <td>${randomLng}</td>
+                <td class="status available">Available on duty</td>
+                <td>
+                    <button class="action-button" onclick="viewDetails('Ambulance ${String.fromCharCode(65 + Math.floor(Math.random() * 26))}', ${randomLat}, ${randomLng})">View</button>
+                    <button class="action-button" onclick="trackAmbulance(${randomLat}, ${randomLng})">Track</button>
+                </td>
+            </tr>`;
+            table.insertAdjacentHTML('beforeend', newRow);
+        }, 10000); // Add a new ambulance every 10 seconds
+    </script>
+</body>
+</html>
